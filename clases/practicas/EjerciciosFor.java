@@ -35,4 +35,32 @@ public class EjerciciosFor {
             System.out.println(i+"^2= "+i*i);
         }
     }
+
+    public void Doble(int a){
+        for(int i=1;i<a+1;i++){
+            System.out.println(i+"-"+i*2);
+        }
+    }
+
+    public void Escritura(int a){
+        for(int i=1;i<a+1;i++){
+            System.out.println("Numero: "+i);
+        }
+    }
+
+    public int SumaPrimeros(int a){//revisar recursion
+        int suma=0;
+        for(int i=0;i<=a;i++){
+            suma=suma+i;
+        }
+        return suma;
+    }
+
+    public void AsteriscosLinea(int a){
+        for(int i=0;i<a;i++){
+            System.out.print("*");
+        }
+    }
+
+
 }
