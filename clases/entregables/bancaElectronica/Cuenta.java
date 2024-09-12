@@ -1,4 +1,4 @@
-package tareas.bancaElectronica;
+package entregables.bancaElectronica;
 
 public class Cuenta {
 

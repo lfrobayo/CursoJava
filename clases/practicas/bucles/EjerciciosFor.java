@@ -1,4 +1,6 @@
-package practicas;
+package practicas.bucles;
+
+import java.util.ArrayList;
 
 public class EjerciciosFor {
 
@@ -61,6 +63,55 @@ public class EjerciciosFor {
             System.out.print("*");
         }
     }
+
+    public void ImprimirArray(ArrayList<Integer> arreglo){
+        int pos=0;
+        for(int i:arreglo){ //Esto es un for del tipo for- each, se ve mejor para recorrer arreglos.
+            System.out.println("Posicion "+pos+"= "+i);
+            pos++;
+        }
+    }
+
+    public int SumaArray(ArrayList<Integer> arreglo){
+        int suma=0;
+        for(int i:arreglo){
+            suma+=i;
+        }
+        return suma;
+    }
+
+    public int NumMayor(ArrayList<Integer> arreglo){
+        int mayor=0;
+        for(int i:arreglo){
+            if(mayor<i){
+                mayor=i;
+            }
+        }
+        return mayor;
+    }
+
+    public int CuantosDiez(ArrayList<Integer> arreglo){
+        int cont=0;
+        for(int i:arreglo){
+            if(i==10){
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    public int MayorQue(ArrayList<Integer> arreglo,int a){
+        int cont=0;
+        for(int i:arreglo){
+            if(i>a){
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+
+
 
 
 }

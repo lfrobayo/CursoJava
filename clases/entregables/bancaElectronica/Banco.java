@@ -1,32 +1,20 @@
-package tareas.bancaElectronica;
+package entregables.bancaElectronica;
 
 import java.util.ArrayList;
 
-public class Cliente {
-
-    private int numero;
+public class Banco {
     private String nombre;
     private Domicilio domicilio;
     private String rfc;
     private String telefono;
-    private ArrayList<Cuenta> cuentas;
-    private String fechaNacimiento;
+    private ArrayList<Cliente> clientes;
 
-    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento) {
-        this.numero = numero;
+    public Banco(String nombre, Domicilio domicilio, String rfc, String telefono, ArrayList<Cliente> clientes) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.rfc = rfc;
         this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
+        this.clientes = clientes;
     }
 
     public String getNombre() {
@@ -61,32 +49,22 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public ArrayList<Cuenta> getCuentas() {
-        return cuentas;
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
     }
 
-    public void setCuentas(ArrayList<Cuenta> cuentas) {
-        this.cuentas = cuentas;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "numero=" + numero +
-                ", nombre='" + nombre + '\'' +
+        return "Banco{" +
+                "nombre='" + nombre + '\'' +
                 ", domicilio=" + domicilio +
                 ", rfc='" + rfc + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", cuentas=" + cuentas +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", clientes=" + clientes +
                 '}';
     }
 }

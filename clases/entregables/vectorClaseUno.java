@@ -1,4 +1,4 @@
-package tareas;
+package entregables;
 
 public class vectorClaseUno {
     public static void main(String[] args) {
