@@ -1,6 +1,6 @@
 package entregables.bancaElectronica;
 
-public class Cuenta {
+public abstract class Cuenta {
 
     private int numero;
     private String fechaApertura;

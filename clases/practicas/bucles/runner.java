@@ -27,13 +27,13 @@ public class runner {
         //System.out.println(ejercicios.SumaArray(numeros));
         //System.out.println(ejercicios.NumMayor(numeros));
         //System.out.println(ejercicios.CuantosDiez(numeros));
-        System.out.println(ejercicios.MayorQue(numeros,10));
-
-
-
-
-
-
+        //System.out.println(ejercicios.MayorQue(numeros,10));
+        //ejercicios.Multiplos(1,100,3);
+        //ejercicios.Inverso(numeros);
+        //System.out.println(ejercicios.Fibonacci(3));
+        //ejercicios.FibonacciFor(5);
+        //ejercicios.Palabra("hola");
+        //ejercicios.Mayuscula("hola");
 
     }
 }
