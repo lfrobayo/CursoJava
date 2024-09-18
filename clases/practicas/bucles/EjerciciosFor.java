@@ -166,5 +166,65 @@ public class EjerciciosFor {
         }
     }
 
+    public void AsteriscosPiramide(int a){
+        for (int i = 1; i <= a; i++) {//altura de piramide
+            for (int k = 1; k <= i; k++) {
+                System.out.print("*");
+            }
+            // Salto de línea después de cada fila
+            System.out.println();
+        }
+    }
 
+    public String Encontrado(ArrayList<Integer> arreglo, int a){
+        for(int i:arreglo){
+            if(i==a){
+                return "Encontrado";
+            }
+        }
+        return "No encontrado";
+    }
+
+    public void PosImpares(ArrayList<Integer> arreglo){
+        for(int i=0;i< arreglo.size();i++){
+            if(i%2==1){
+                System.out.println(arreglo.get(i));
+            }
+        }
+    }
+
+    public double PromArray(ArrayList<Integer> arreglo){
+        double suma=0;
+        for(int i:arreglo){
+            suma+=i;
+        }
+        return suma/arreglo.size();
+    }
+
+    public int CuantosString(Object[] arreglo){
+        int var=0;
+        for(Object i:arreglo){
+            if(i instanceof String){
+               var++; //instanfeof es para preguntar si es un instancia de....
+            }
+        }
+        return var;
+    }
+
+    public void Cadena(String[] arreglo){
+        StringBuilder cadena = new StringBuilder();
+        for(String i:arreglo){
+            cadena.append(i);
+        }
+        System.out.println(cadena);
+    }
+
+    public void PiramideInver(int a){
+        for(int i=0;i<a;i++){
+            for(int k=a;k>i;k--){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
 }

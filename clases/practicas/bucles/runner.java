@@ -34,6 +34,18 @@ public class runner {
         //ejercicios.FibonacciFor(5);
         //ejercicios.Palabra("hola");
         //ejercicios.Mayuscula("hola");
+        //ejercicios.AsteriscosPiramide(5);
+        //System.out.println(ejercicios.Encontrado(numeros,40));
+        //ejercicios.PosImpares(numeros);
+        //System.out.println(ejercicios.PromArray(numeros));
+        Object[] arreglo = {1, "Hola", 3.14, "Mundo", 42, "Java"};
+        //System.out.println(ejercicios.CuantosString(arreglo));
+        String[] arregloS = {"Hola", "Mundo", "Java", "Programación", "Código"};
+        //ejercicios.Cadena(arregloS);
+        ejercicios.PiramideInver(5);
+
+
+
 
     }
 }
