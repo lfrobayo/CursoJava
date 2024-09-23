@@ -14,6 +14,9 @@ public class ServicioCuentasImp implements ServicioCuentas {
 
     public ServicioCuentasImp(Cliente cliente) {
         this.cliente = cliente;
+        if (cliente.getCuentas() == null) {
+            cliente.setCuentas(new ArrayList<>());
+        }
     }
 
     @Override
@@ -37,6 +40,7 @@ public class ServicioCuentasImp implements ServicioCuentas {
 
     @Override
     public void abonarCuenta(int numero, double abono) {
+        cuentas=cliente.getCuentas();
         for (Cuenta cuenta : cuentas) {
             if (cuenta.getNumero() == numero) {
                 cuenta.setSaldo(cuenta.getSaldo()+abono);

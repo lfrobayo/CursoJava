@@ -227,4 +227,209 @@ public class EjerciciosFor {
             System.out.println();
         }
     }
+
+    public void StringtoNum(ArrayList<String> arreglo){
+        ArrayList<Integer> resultado=new ArrayList<>();
+        for(String a:arreglo){
+            resultado.add(Integer.parseInt(a));
+        }
+        System.out.println(resultado);
+    }
+
+    public void MayorQueEnArray(ArrayList<Integer> arreglo, int a){
+        ArrayList<Integer> resultado= new ArrayList<>();
+        for(int i:arreglo){
+            if(i>a){
+                resultado.add(i);
+            }
+        }
+        System.out.println(resultado);
+    }
+
+    public void MenorMayor(ArrayList<Integer> arreglo){
+        int k;
+        System.out.println("Arreglo original");
+        System.out.println(arreglo);
+        for(int i=0;i<arreglo.size();i++){
+            for(int j=0;j<arreglo.size();j++){
+                if(arreglo.get(i)<arreglo.get(j)){
+                    k=arreglo.get(j);
+                    arreglo.set(j,arreglo.get(i));
+                    arreglo.set(i,k);
+                }
+            }
+        }
+        System.out.println("arreglo ordenado");
+        System.out.println(arreglo);
+    }
+
+    public void Transpuesta(int[][] matriz){
+        System.out.println("La matriz original es: ");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("La transpuesta es: ");
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
+
+        int[][] transpuesta = new int[columnas][filas];
+        // Intercambiar filas por columnas
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                transpuesta[j][i] = matriz[i][j];
+            }
+        }
+        for (int i = 0; i < transpuesta.length; i++) {
+            for (int j = 0; j < transpuesta[i].length; j++) {
+                System.out.print(transpuesta[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public boolean Palindromo(ArrayList<Integer> arreglo){
+        for(int i=0;i< arreglo.size()/2;i++){
+            if(arreglo.get(i)==arreglo.get(arreglo.size()-i-1)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void SegundoMayor(ArrayList<Integer> arreglo){
+        MenorMayor(arreglo);
+        System.out.println("El segundo mayor es: "+arreglo.get(arreglo.size()-2));
+    }
+
+    public void Factores(int a){
+        ArrayList<Integer> resultado = new ArrayList<>();
+        for(int i=1;i<=a;i++){
+            if(a%i==0){
+                resultado.add(i);
+            }
+        }
+        System.out.println(resultado);
+    }
+
+    public int Factorial(int a){
+        int var = 1;
+        for(int i=1;i<=a;i++){
+           var*=i;
+        }
+        return var;
+    }
+
+    public int FactorialDos(int a){ //Recursión
+        if(a==0 || a==1){
+            return 1;
+        }
+        else{
+            return FactorialDos(a-1)*a;
+        }
+    }
+
+    public void Triangulo(int a){
+        for(int i=1;i<=a;i++){
+            for(int j=0;j<i;j++){
+                System.out.print(i);
+            }
+            System.out.println();
+        }
+    }
+
+    public void Primos(int a){
+        ArrayList<Integer> primos=new ArrayList<>();
+        for(int i=2;i<=a;i++){
+            boolean primo=true;
+            for(int j=2;j<=i/2;j++){
+                if (i%j==0){
+                    primo=false;
+                    break;
+                }
+            }
+            if(primo){
+                primos.add(i);
+            }
+        }
+        System.out.println(primos);
+    }
+
+    public void Perfecto(int a){
+        //Se realizo el ejercicio solo para los primeros 3 perfectos ya que los otros son numeros muy grandes
+        ArrayList<Integer> perfecto=new ArrayList<>();
+        for(int i=2;i<=a;i++) {
+            int var=1;
+            if(i==a && perfecto.size()<3){
+                a++;
+            }
+            for (int j = 2; j <= i / 2; j++) {
+                if (i % j == 0) {
+                    var+=j;
+                }
+            }
+            if(var==i){
+                perfecto.add(i);
+            }
+        }
+        System.out.println(perfecto);
+    }
+
+    public void SumaMatrices(int[][] A,int[][] B){
+        int filas = A.length;
+        int columnas =A[0].length;
+
+        int[][] resultado = new int[filas][columnas];
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                resultado[i][j] = A[i][j] + B[i][j];
+            }
+        }
+
+        for (int i = 0; i < resultado.length; i++) {
+            for (int j = 0; j < resultado[i].length; j++) {
+                System.out.print(resultado[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+    public void MultiplicarMatrices(int[][] A,int[][] B){
+        int [][] resultado = new int[A.length][B[0].length];
+        for (int i = 0; i <A.length; i++) {
+            for (int j = 0; j < B[0].length; j++) {
+                for (int k = 0; k < A[0].length; k++) {
+                    resultado[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        for (int i = 0; i < resultado.length; i++) {
+            for (int j = 0; j < resultado[i].length; j++) {
+                System.out.print(resultado[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void TrianguloRaro(int a){
+        a++;
+        for(int i=0;i<=a;i++){
+            for(int j=1;j<i;j++){
+                if(i%2==0){
+                    System.out.print(i);
+                }
+                else{
+                    System.out.print(j);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
+
 }

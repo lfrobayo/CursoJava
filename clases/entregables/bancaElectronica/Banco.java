@@ -59,12 +59,17 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "Banco{" +
-                "nombre='" + nombre + '\'' +
-                ", domicilio=" + domicilio +
-                ", rfc='" + rfc + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", clientes=" + clientes +
-                '}';
+        StringBuilder sb = new StringBuilder(); //Stringbuldier permite mejorar la concatenación de string cuando
+        // se tienen string dentro de otro como en este caso
+        sb.append(String.format(
+                "Banco: %s\nRFC: %s\nTelefono: %s\n%s\n\nClientes:\n",
+                nombre, rfc, telefono, domicilio.toString()
+        ));
+
+        for (Cliente cliente : clientes) {
+            sb.append(cliente.toString()).append("\n");
+        }
+
+        return sb.toString();
     }
 }

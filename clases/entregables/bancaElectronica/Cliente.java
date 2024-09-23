@@ -79,14 +79,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "numero=" + numero +
-                ", nombre='" + nombre + '\'' +
-                ", domicilio=" + domicilio +
-                ", rfc='" + rfc + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", cuentas=" + cuentas +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                '}';
+        return String.format( //el uso de .format ayuda a que la informacion se vea mucho mejor al imprimir
+                "Cliente ID: %d\n\tNombre: %s\n\tRFC: %s\n\tTeléfono: %s\n\tFecha de Nacimiento: %s\n\t%s",
+                numero, nombre, rfc, telefono, fechaNacimiento, domicilio.toString()
+        );
     }
 }

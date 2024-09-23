@@ -42,7 +42,73 @@ public class runner {
         //System.out.println(ejercicios.CuantosString(arreglo));
         String[] arregloS = {"Hola", "Mundo", "Java", "Programación", "Código"};
         //ejercicios.Cadena(arregloS);
-        ejercicios.PiramideInver(5);
+        //ejercicios.PiramideInver(5);
+
+        ArrayList<String> listaDeNumeros = new ArrayList<>();
+        listaDeNumeros.add("123");
+        listaDeNumeros.add("456");
+        listaDeNumeros.add("789");
+        listaDeNumeros.add("101112");
+        listaDeNumeros.add("131415");
+
+        //ejercicios.StringtoNum(listaDeNumeros);
+
+        ArrayList<Integer> listaDeNumerosDos = new ArrayList<>();
+
+        // Agregar números menores y mayores a 50
+        listaDeNumerosDos.add(10);
+        listaDeNumerosDos.add(25);
+        listaDeNumerosDos.add(50);
+        listaDeNumerosDos.add(75);
+        listaDeNumerosDos.add(100);
+        listaDeNumerosDos.add(1);
+        listaDeNumerosDos.add(55);
+
+        //ejercicios.MayorQueEnArray(listaDeNumerosDos,50);
+        //ejercicios.MenorMayor(listaDeNumerosDos);
+
+        int[][] matriz = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        //ejercicios.Transpuesta(matriz);
+
+
+        ArrayList<Integer> numerosPalindromos = new ArrayList<>();
+
+        numerosPalindromos.add(1);
+        numerosPalindromos.add(3);
+        numerosPalindromos.add(5);
+        numerosPalindromos.add(5);
+        numerosPalindromos.add(3);
+        numerosPalindromos.add(1);
+
+        //System.out.println(ejercicios.Palindromo(numerosPalindromos));
+        //ejercicios.SegundoMayor(numeros);
+        //ejercicios.Factores(100);
+        //System.out.println(ejercicios.Factorial(4));
+        //System.out.println(ejercicios.FactorialDos(4));
+        //ejercicios.Triangulo(5);
+        //ejercicios.Primos(100);
+        //ejercicios.Perfecto(5);
+        int[][] matrizA = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int[][] matrizB = {
+                {9, 8, 7},
+                {6, 5, 4},
+                {3, 2, 1}
+        };
+
+        //ejercicios.SumaMatrices(matrizA,matrizB);
+        //ejercicios.MultiplicarMatrices(matrizA,matrizB);
+        ejercicios.TrianguloRaro(5);
+
 
 
 

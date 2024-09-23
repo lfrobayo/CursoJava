@@ -24,8 +24,9 @@ public class CuentaDeAhorro extends Cuenta{
 
     @Override
     public String toString() {
-        return "CuentaDeAhorro{" +
-                "tasaInteresMenual=" + tasaInteresMenual +
-                '}';
+        return String.format(
+                "Cuenta de Ahorro: %d\nSaldo: %.2f\nTasa de Interés Mensual: %.2f%%\n",
+                getNumero(), getSaldo(), getTasaInteresMenual()
+        );
     }
 }

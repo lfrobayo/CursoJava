@@ -57,12 +57,9 @@ public class Domicilio {
 
     @Override
     public String toString() {
-        return "Domicilio{" +
-                "calle='" + calle + '\'' +
-                ", numero=" + numero +
-                ", colonia='" + colonia + '\'' +
-                ", estado='" + estado + '\'' +
-                ", codigoPostal=" + codigoPostal +
-                '}';
+        return String.format(
+                "Domicilio:\n\tCalle: %s\n\tNúmero: %d\n\tColonia: %s\n\tEstado: %s\n\tCódigo Postal: %d",
+                calle, numero, colonia, estado, codigoPostal
+        );
     }
 }
