@@ -1,5 +1,7 @@
 package entregables.bancaElectronica;
 
+import java.util.Comparator;
+
 public abstract class Cuenta {
 
     private int numero;
@@ -53,4 +55,11 @@ public abstract class Cuenta {
                 ", fechaCancelacion='" + fechaCancelacion + '\'' +
                 '}';
     }
+
+    public static Comparator<Cuenta> ordenarPorSaldo = new Comparator<Cuenta>() {
+        @Override
+        public int compare(Cuenta c1, Cuenta c2) {
+            return Double.compare(c1.getSaldo(), c2.getSaldo());
+        }
+    };
 }

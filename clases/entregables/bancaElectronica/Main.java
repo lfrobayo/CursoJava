@@ -4,6 +4,8 @@ import entregables.bancaElectronica.implementacion.ServicioClientesImp;
 import entregables.bancaElectronica.implementacion.ServicioCuentasImp;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,9 +17,18 @@ public class Main {
         Cliente clienteDos = new Cliente(2, "Prueba2", domicilioUno, "rfc", "302", "25 de junio 1990");
 
         // Crear lista de clientes para el banco
-        ArrayList<Cliente> clientesBancoUno = new ArrayList<>();
+        TreeSet<Cliente> clientesBancoUno = new TreeSet<>();
         clientesBancoUno.add(clienteUno);
         clientesBancoUno.add(clienteDos);
+
+        /*Collections.sort(clientesBancoUno);
+        Esto se hizo con la intencion de mostrar un ordenamiento
+        pero al cambiar por TreeSet el tipo de dato de cliente
+        ya no es necesario, pues treeSet ordena de menor a mayor
+        System.out.println("Clientes ordenados por número:");
+        for (Cliente cliente : clientesBancoUno) {
+            System.out.println(cliente);
+        }*/
 
         // Crear banco
         Banco bancoUno = new Banco("RP", domicilioUno, "rfc", "301", clientesBancoUno);
@@ -55,6 +66,8 @@ public class Main {
         System.out.println("\nEstado final de las cuentas después de abonos y retiros:");
         System.out.println(clienteUno);
         System.out.println(clienteDos);
+
+
     }
 
 }

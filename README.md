@@ -13,5 +13,9 @@ En 3. practicas, encontramos los ejercicios que son de practica por ahora los ej
 ![img.png](img.png)
 
 Así es como se ve la salida por consola de cada capitulo
-Entregables capitulo 1:
+Entregables capitulo 1 y 2:
 ![img_1.png](img_1.png)
+Capitulo 3:
+
+Actividad de ordenamiento
+![img_2.png](img_2.png)

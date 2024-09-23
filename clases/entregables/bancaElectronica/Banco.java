@@ -1,15 +1,16 @@
 package entregables.bancaElectronica;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class Banco {
     private String nombre;
     private Domicilio domicilio;
     private String rfc;
     private String telefono;
-    private ArrayList<Cliente> clientes;
+    private TreeSet<Cliente> clientes;
 
-    public Banco(String nombre, Domicilio domicilio, String rfc, String telefono, ArrayList<Cliente> clientes) {
+    public Banco(String nombre, Domicilio domicilio, String rfc, String telefono, TreeSet<Cliente> clientes) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.rfc = rfc;
@@ -49,11 +50,11 @@ public class Banco {
         this.telefono = telefono;
     }
 
-    public ArrayList<Cliente> getClientes() {
+    public TreeSet<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
+    public void setClientes(TreeSet<Cliente> clientes) {
         this.clientes = clientes;
     }
 

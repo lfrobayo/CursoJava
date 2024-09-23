@@ -2,7 +2,7 @@ package entregables.bancaElectronica;
 
 import java.util.ArrayList;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 
     private int numero;
     private String nombre;
@@ -83,5 +83,10 @@ public class Cliente {
                 "Cliente ID: %d\n\tNombre: %s\n\tRFC: %s\n\tTeléfono: %s\n\tFecha de Nacimiento: %s\n\t%s",
                 numero, nombre, rfc, telefono, fechaNacimiento, domicilio.toString()
         );
+    }
+
+    @Override
+    public int compareTo(Cliente o) {
+        return Integer.compare(this.numero,o.getNumero());
     }
 }

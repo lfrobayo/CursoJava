@@ -5,11 +5,12 @@ import entregables.bancaElectronica.Cliente;
 import entregables.bancaElectronica.ServicioClientes;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class ServicioClientesImp implements ServicioClientes {
 
     private Banco banco;
-    private ArrayList<Cliente> clientes;
+    private TreeSet<Cliente> clientes;
 
     public ServicioClientesImp(Banco banco) {
         this.banco = banco;
@@ -47,7 +48,7 @@ public class ServicioClientesImp implements ServicioClientes {
     }
 
     @Override
-    public ArrayList<Cliente> obtenerCliente() {
+    public TreeSet<Cliente> obtenerCliente() {
         return banco.getClientes();
     }
 
