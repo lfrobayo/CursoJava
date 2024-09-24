@@ -31,7 +31,7 @@ public class ServicioCuentasImp implements ServicioCuentas {
     @Override
     public boolean cancelarCuenta(int numero) {
         List<Cuenta> cuentas = cliente.getCuentas();
-        Optional<Cuenta> cuentaAEliminar = cuentas.stream()
+        Optional<Cuenta> cuentaAEliminar = cuentas.parallelStream()
                 .filter(cuenta -> cuenta.getNumero() == numero)
                 .findFirst();
 
@@ -42,7 +42,7 @@ public class ServicioCuentasImp implements ServicioCuentas {
 
     @Override
     public void abonarCuenta(int numero, double abono) {
-        cliente.getCuentas().stream()
+        cliente.getCuentas().parallelStream()
                 .filter(cuenta -> cuenta.getNumero() == numero)
                 .findFirst()
                 .ifPresent(cuenta -> cuenta.setSaldo(cuenta.getSaldo() + abono));
@@ -51,7 +51,7 @@ public class ServicioCuentasImp implements ServicioCuentas {
 
     @Override
     public void retirar(int numero, double retiro) {
-        cliente.getCuentas().stream()
+        cliente.getCuentas().parallelStream()
                 .filter(cuenta -> cuenta.getNumero() == numero)
                 .findFirst()
                 .ifPresent(cuenta -> cuenta.setSaldo(cuenta.getSaldo() - retiro));

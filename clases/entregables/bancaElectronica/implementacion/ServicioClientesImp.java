@@ -28,7 +28,7 @@ public class ServicioClientesImp implements ServicioClientes {
     @Override
     public boolean eliminarCliente(int numero) {
         TreeSet<Cliente> clientes = banco.getClientes();
-        Optional<Cliente> clienteAEliminar = clientes.stream()
+        Optional<Cliente> clienteAEliminar = clientes.parallelStream()
                 .filter(cliente -> cliente.getNumero() == numero)
                 .findFirst();
 
@@ -39,7 +39,7 @@ public class ServicioClientesImp implements ServicioClientes {
 
     @Override
     public Cliente consultarCliente(int numero) {
-        return banco.getClientes().stream()
+        return banco.getClientes().parallelStream()
                 .filter(cliente -> cliente.getNumero() == numero)
                 .findFirst()
                 .orElse(null);
