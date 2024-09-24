@@ -31,3 +31,7 @@ Adjunto evidencia de la salida por consola cap 7
 
 Capitulo 8: 
 ![img_6.png](img_6.png)
+
+Capitulo 10: 
+Salida por consola con implementación de hilos, cabe recalcar que fue mucho más rápida la ejecución
+![img_7.png](img_7.png)
