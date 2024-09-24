@@ -3,8 +3,6 @@ package entregables.bancaElectronica;
 import entregables.bancaElectronica.implementacion.ServicioClientesImp;
 import entregables.bancaElectronica.implementacion.ServicioCuentasImp;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.TreeSet;
 
 public class Main {
@@ -13,13 +11,16 @@ public class Main {
         Domicilio domicilioUno = new Domicilio("st", 2, "mani", "NY", 1701);
 
         // Crear clientes
-        Cliente clienteUno = new Cliente(1, "Prueba", domicilioUno, "rfc", "300", "25 de junio 1994");
-        Cliente clienteDos = new Cliente(2, "Prueba2", domicilioUno, "rfc", "302", "25 de junio 1990");
+        Cliente clienteUno = new Cliente(1, "Pruebaaaaaa", domicilioUno, "rfccap7", "300", "25 de junio 1994");
+        Cliente clienteDos = new Cliente(2, "Prueba2", domicilioUno, "rfcCap7", "302", "25 de junio 1990");
+        Cliente clienteTres = new Cliente(3, "Prueba3", domicilioUno, "rfcCap8", "303", "25 de junio 1980");
 
-        // Crear lista de clientes para el banco
+        // Crear TreeSet de clientes para el banco (TreeSet ya los ordena por número)
         TreeSet<Cliente> clientesBancoUno = new TreeSet<>();
         clientesBancoUno.add(clienteUno);
         clientesBancoUno.add(clienteDos);
+        clientesBancoUno.add(clienteTres);
+
 
         /*Collections.sort(clientesBancoUno);
         Esto se hizo con la intencion de mostrar un ordenamiento
@@ -30,7 +31,7 @@ public class Main {
             System.out.println(cliente);
         }*/
 
-        // Crear banco
+        // Crear banco con los clientes
         Banco bancoUno = new Banco("RP", domicilioUno, "rfc", "301", clientesBancoUno);
 
         // Servicio de clientes y cuentas
@@ -39,8 +40,8 @@ public class Main {
         ServicioCuentas servicioCuentasClienteDos = new ServicioCuentasImp(clienteDos);
 
         // Crear cuentas para clienteUno y clienteDos
-        CuentaDeAhorro cuentaAhorroClienteUno = new CuentaDeAhorro(1, 500, 2);  // Cliente Uno
-        CuentaDeCheque cuentaChequeClienteDos = new CuentaDeCheque(2, 1000, 100);  // Cliente Dos
+        CuentaDeAhorro cuentaAhorroClienteUno = new CuentaDeAhorro(1, 500, 2);  // Cuenta de ahorro para Cliente Uno
+        CuentaDeCheque cuentaChequeClienteDos = new CuentaDeCheque(2, 1000, 10);  // Cuenta de cheque para Cliente Dos
 
         // Agregar cuentas a los clientes
         servicioCuentasClienteUno.agregarCuenta(cuentaAhorroClienteUno);
@@ -48,26 +49,28 @@ public class Main {
 
         // Mostrar cuentas de clienteUno
         System.out.println("Cuentas del Cliente Uno:");
-        for (Cuenta cuenta : servicioCuentasClienteUno.obtenerCuentas()) {
-            System.out.println(cuenta);
-        }
+        servicioCuentasClienteUno.obtenerCuentas().forEach(System.out::println);
 
         // Mostrar cuentas de clienteDos
         System.out.println("\nCuentas del Cliente Dos:");
-        for (Cuenta cuenta : servicioCuentasClienteDos.obtenerCuentas()) {
-            System.out.println(cuenta);
-        }
+        servicioCuentasClienteDos.obtenerCuentas().forEach(System.out::println);
 
         // Abonar y retirar
-        servicioCuentasClienteUno.abonarCuenta(1, 100);  // Abonar 100 a la cuenta de clienteUno
-        servicioCuentasClienteDos.retirar(2, 200);  // Retirar 200 de la cuenta de clienteDos
+        servicioCuentasClienteUno.abonarCuenta(1, 100);
+        servicioCuentasClienteDos.retirar(2, 20);
 
-        // Mostrar estado final de las cuentas
+        // Mostrar estado final de las cuentas después de abonos y retiros
         System.out.println("\nEstado final de las cuentas después de abonos y retiros:");
-        System.out.println(clienteUno);
-        System.out.println(clienteDos);
+        System.out.println("Cliente Uno:\n" + clienteUno);
+        System.out.println("Cliente Dos:\n" + clienteDos);
 
+        // Eliminar cliente del banco
+        boolean clienteEliminado = servicioClientes.eliminarCliente(2);
+        System.out.println("Cliente 2 eliminado: " + clienteEliminado);
 
+        // Mostrar los clientes restantes en el banco
+        System.out.println("Clientes restantes en el banco:");
+        bancoUno.getClientes().forEach(System.out::println);
     }
-
 }
+

@@ -6,6 +6,7 @@ import entregables.bancaElectronica.ServicioCuentas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ServicioCuentasImp implements ServicioCuentas {
 
@@ -29,34 +30,31 @@ public class ServicioCuentasImp implements ServicioCuentas {
 
     @Override
     public boolean cancelarCuenta(int numero) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getNumero() == numero) {
-                cuentas.remove(cuenta);
-                return true;
-            }
-        }
-        return false;
+        List<Cuenta> cuentas = cliente.getCuentas();
+        Optional<Cuenta> cuentaAEliminar = cuentas.stream()
+                .filter(cuenta -> cuenta.getNumero() == numero)
+                .findFirst();
+
+        cuentaAEliminar.ifPresent(cuentas::remove);
+
+        return cuentaAEliminar.isPresent();
     }
 
     @Override
     public void abonarCuenta(int numero, double abono) {
-        cuentas=cliente.getCuentas();
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getNumero() == numero) {
-                cuenta.setSaldo(cuenta.getSaldo()+abono);
-                break;
-            }
-        }
+        cliente.getCuentas().stream()
+                .filter(cuenta -> cuenta.getNumero() == numero)
+                .findFirst()
+                .ifPresent(cuenta -> cuenta.setSaldo(cuenta.getSaldo() + abono));
+
     }
 
     @Override
     public void retirar(int numero, double retiro) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getNumero() == numero) {
-                cuenta.setSaldo(cuenta.getSaldo()-retiro);
-                break;
-            }
-        }
+        cliente.getCuentas().stream()
+                .filter(cuenta -> cuenta.getNumero() == numero)
+                .findFirst()
+                .ifPresent(cuenta -> cuenta.setSaldo(cuenta.getSaldo() - retiro));
     }
 
     @Override

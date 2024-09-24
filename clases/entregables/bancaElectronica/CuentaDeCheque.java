@@ -9,10 +9,15 @@ public class CuentaDeCheque extends Cuenta{
         this.costoManejoMensual=costoManejoMensual;
     }
 
+    public double getCostoManejoMensual() {
+        return costoManejoMensual;
+    }
+
     @Override
     public String toString() {
-        return "CuentaDeCheque{" +
-                "costoManejoMensual=" + costoManejoMensual +
-                '}';
+        return String.format(
+                "Cuenta de cheque: %d\nSaldo: %.2f\nCosto de manejo mensual: %.2f%%\n",
+                getNumero(), getSaldo(), getCostoManejoMensual()
+        );
     }
 }

@@ -4,7 +4,8 @@ import entregables.bancaElectronica.Banco;
 import entregables.bancaElectronica.Cliente;
 import entregables.bancaElectronica.ServicioClientes;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.TreeSet;
 
 public class ServicioClientesImp implements ServicioClientes {
@@ -26,25 +27,22 @@ public class ServicioClientesImp implements ServicioClientes {
 
     @Override
     public boolean eliminarCliente(int numero) {
-        clientes=banco.getClientes();
-        for(Cliente cliente:clientes){
-            if(cliente.getNumero()==numero){
-                clientes.remove(cliente);
-                return true;
-            }
-        }
-        return false;
+        TreeSet<Cliente> clientes = banco.getClientes();
+        Optional<Cliente> clienteAEliminar = clientes.stream()
+                .filter(cliente -> cliente.getNumero() == numero)
+                .findFirst();
+
+        clienteAEliminar.ifPresent(clientes::remove);
+
+        return clienteAEliminar.isPresent();
     }
 
     @Override
     public Cliente consultarCliente(int numero) {
-        clientes=banco.getClientes();
-        for(Cliente cliente:clientes){
-            if(cliente.getNumero()==numero){
-                return cliente;
-            }
-        }
-        return null;
+        return banco.getClientes().stream()
+                .filter(cliente -> cliente.getNumero() == numero)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

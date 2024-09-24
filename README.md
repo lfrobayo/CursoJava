@@ -19,3 +19,13 @@ Capitulo 3:
 
 Actividad de ordenamiento
 ![img_2.png](img_2.png)
+
+Capitulo 6:
+Adjunto evidencia de la salida por consola
+![img_3.png](img_3.png)
+
+Capitulo 7: 
+Adjunto evidencia de la salida por consola cap 7
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+
