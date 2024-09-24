@@ -1,5 +1,7 @@
 package entregables.bancaElectronica;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Cliente implements Comparable<Cliente>{
@@ -10,7 +12,9 @@ public class Cliente implements Comparable<Cliente>{
     private String rfc;
     private String telefono;
     private ArrayList<Cuenta> cuentas;
-    private String fechaNacimiento;
+    private LocalDate fechaNacimiento;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento) {
         this.numero = numero;
@@ -18,7 +22,7 @@ public class Cliente implements Comparable<Cliente>{
         this.domicilio = domicilio;
         this.rfc = rfc;
         this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = LocalDate.parse(fechaNacimiento,formatter);
     }
 
     public int getNumero() {
@@ -69,12 +73,12 @@ public class Cliente implements Comparable<Cliente>{
         this.cuentas = cuentas;
     }
 
-    public String getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = LocalDate.parse(fechaNacimiento);
     }
 
     @Override

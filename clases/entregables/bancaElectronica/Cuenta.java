@@ -1,13 +1,17 @@
 package entregables.bancaElectronica;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 public abstract class Cuenta {
 
     private int numero;
-    private String fechaApertura;
+    private LocalDate fechaApertura;
     private double saldo;
-    private String fechaCancelacion;
+    private LocalDate fechaCancelacion;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public Cuenta(int numero, double saldo) {
         this.numero = numero;
@@ -22,12 +26,12 @@ public abstract class Cuenta {
         this.numero = numero;
     }
 
-    public String getFechaApertura() {
+    public LocalDate getFechaApertura() {
         return fechaApertura;
     }
 
     public void setFechaApertura(String fechaApertura) {
-        this.fechaApertura = fechaApertura;
+        this.fechaApertura = LocalDate.parse(fechaApertura,formatter);
     }
 
     public double getSaldo() {
@@ -38,12 +42,12 @@ public abstract class Cuenta {
         this.saldo = saldo;
     }
 
-    public String getFechaCancelacion() {
+    public LocalDate getFechaCancelacion() {
         return fechaCancelacion;
     }
 
     public void setFechaCancelacion(String fechaCancelacion) {
-        this.fechaCancelacion = fechaCancelacion;
+        this.fechaCancelacion = LocalDate.parse(fechaCancelacion,formatter);
     }
 
     @Override

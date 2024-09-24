@@ -14,10 +14,11 @@ public class Main {
         // Crear domicilio
         Domicilio domicilioUno = new Domicilio("st", 2, "mani", "NY", 1701);
 
+
         // Crear clientes
-        Cliente clienteUno = new Cliente(1, "Pruebaaaaaa", domicilioUno, "rfccap7", "300", "25 de junio 1994");
-        Cliente clienteDos = new Cliente(2, "Prueba2", domicilioUno, "rfcCap7", "302", "25 de junio 1990");
-        Cliente clienteTres = new Cliente(3, "Prueba3", domicilioUno, "rfcCap8", "303", "25 de junio 1980");
+        Cliente clienteUno = new Cliente(1, "Pruebaaaaaa", domicilioUno, "rfccap7", "300", "25-06-1994");
+        Cliente clienteDos = new Cliente(2, "Prueba2", domicilioUno, "rfcCap7", "302", "25-06-1990");
+        Cliente clienteTres = new Cliente(3, "Prueba3", domicilioUno, "rfcCap8", "303", "25-06-1980");
 
         // Crear TreeSet de clientes para el banco (TreeSet ya los ordena por número)
         TreeSet<Cliente> clientesBancoUno = new TreeSet<>();
