@@ -29,3 +29,5 @@ Adjunto evidencia de la salida por consola cap 7
 ![img_4.png](img_4.png)
 ![img_5.png](img_5.png)
 
+Capitulo 8: 
+![img_6.png](img_6.png)

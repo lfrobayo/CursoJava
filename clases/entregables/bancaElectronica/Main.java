@@ -3,7 +3,11 @@ package entregables.bancaElectronica;
 import entregables.bancaElectronica.implementacion.ServicioClientesImp;
 import entregables.bancaElectronica.implementacion.ServicioCuentasImp;
 
-import java.util.TreeSet;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,15 +25,15 @@ public class Main {
         clientesBancoUno.add(clienteDos);
         clientesBancoUno.add(clienteTres);
 
-
-        /*Collections.sort(clientesBancoUno);
-        Esto se hizo con la intencion de mostrar un ordenamiento
-        pero al cambiar por TreeSet el tipo de dato de cliente
-        ya no es necesario, pues treeSet ordena de menor a mayor
-        System.out.println("Clientes ordenados por número:");
-        for (Cliente cliente : clientesBancoUno) {
-            System.out.println(cliente);
-        }*/
+        // Leer el archivo de cuentas
+        Path path = Paths.get("clases/entregables/bancaElectronica/files/cuentas.txt");
+        List<String> lineas;
+        try {
+            lineas = Files.readAllLines(path);
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+            return;
+        }
 
         // Crear banco con los clientes
         Banco bancoUno = new Banco("RP", domicilioUno, "rfc", "301", clientesBancoUno);
@@ -38,39 +42,76 @@ public class Main {
         ServicioClientes servicioClientes = new ServicioClientesImp(bancoUno);
         ServicioCuentas servicioCuentasClienteUno = new ServicioCuentasImp(clienteUno);
         ServicioCuentas servicioCuentasClienteDos = new ServicioCuentasImp(clienteDos);
+        ServicioCuentas servicioCuentasClienteTres = new ServicioCuentasImp(clienteTres);
 
-        // Crear cuentas para clienteUno y clienteDos
-        CuentaDeAhorro cuentaAhorroClienteUno = new CuentaDeAhorro(1, 500, 2);  // Cuenta de ahorro para Cliente Uno
-        CuentaDeCheque cuentaChequeClienteDos = new CuentaDeCheque(2, 1000, 10);  // Cuenta de cheque para Cliente Dos
+        // Asignar cuentas a los clientes según el archivo
+        for (String linea : lineas) {
+            try {
+                if (linea.isEmpty()) {
+                    continue; // Salta las líneas vacías
+                }
 
-        // Agregar cuentas a los clientes
-        servicioCuentasClienteUno.agregarCuenta(cuentaAhorroClienteUno);
-        servicioCuentasClienteDos.agregarCuenta(cuentaChequeClienteDos);
+                String tipoCuenta = linea.substring(0, 2);
+                String[] partes = linea.substring(2).replace("[", "").replace("]", "").split(",");
 
-        // Mostrar cuentas de clienteUno
+                if (partes.length < 5) {
+                    System.err.println("Línea mal formateada: " + linea);
+                    continue;
+                }
+                //.trim() sirve para deshacerse de los espacios en blanco
+                int numero = Integer.parseInt(partes[0].trim());
+                String fecha = partes[1].trim();
+                double saldo = Double.parseDouble(partes[2].trim());
+                double tasaInteres = Double.parseDouble(partes[3].trim());
+                int clienteId = Integer.parseInt(partes[4].trim());
+
+                Cuenta cuenta;
+                if (tipoCuenta.equals("CA")) {
+                    cuenta = new CuentaDeAhorro(numero, saldo, tasaInteres);
+                } else if (tipoCuenta.equals("CC")) {
+                    cuenta = new CuentaDeCheque(numero, saldo, tasaInteres);
+                } else {
+                    System.err.println("Tipo de cuenta desconocido: " + tipoCuenta);
+                    continue;
+                }
+
+                // Asignar cuentas a los clientes según su ID
+                switch (clienteId) {
+                    case 1:
+                        servicioCuentasClienteUno.agregarCuenta(cuenta);
+                        break;
+                    case 2:
+                        servicioCuentasClienteDos.agregarCuenta(cuenta);
+                        break;
+                    case 3:
+                        servicioCuentasClienteTres.agregarCuenta(cuenta);
+                        break;
+                    default:
+                        System.err.println("ID de cliente desconocido: " + clienteId);
+                }
+            } catch (Exception e) {
+                System.err.println("Error al procesar la línea: " + linea);
+                System.err.println("Error: " + e.getMessage());
+            }
+        }
+
+        // Mostrar cuentas de cada cliente
         System.out.println("Cuentas del Cliente Uno:");
-        servicioCuentasClienteUno.obtenerCuentas().forEach(System.out::println);
+        for (Cuenta cuenta : servicioCuentasClienteUno.obtenerCuentas()) {
+            System.out.println(cuenta);
+        }
 
-        // Mostrar cuentas de clienteDos
         System.out.println("\nCuentas del Cliente Dos:");
-        servicioCuentasClienteDos.obtenerCuentas().forEach(System.out::println);
+        for (Cuenta cuenta : servicioCuentasClienteDos.obtenerCuentas()) {
+            System.out.println(cuenta);
+        }
 
-        // Abonar y retirar
-        servicioCuentasClienteUno.abonarCuenta(1, 100);
-        servicioCuentasClienteDos.retirar(2, 20);
+        System.out.println("\nCuentas del Cliente Tres:");
+        for (Cuenta cuenta : servicioCuentasClienteTres.obtenerCuentas()) {
+            System.out.println(cuenta);
+        }
 
-        // Mostrar estado final de las cuentas después de abonos y retiros
-        System.out.println("\nEstado final de las cuentas después de abonos y retiros:");
-        System.out.println("Cliente Uno:\n" + clienteUno);
-        System.out.println("Cliente Dos:\n" + clienteDos);
 
-        // Eliminar cliente del banco
-        boolean clienteEliminado = servicioClientes.eliminarCliente(2);
-        System.out.println("Cliente 2 eliminado: " + clienteEliminado);
-
-        // Mostrar los clientes restantes en el banco
-        System.out.println("Clientes restantes en el banco:");
-        bancoUno.getClientes().forEach(System.out::println);
     }
 }
 
